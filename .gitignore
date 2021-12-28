@@ -36,3 +36,7 @@
 *.vcxproj
 *.user
 *.vs
+
+# dictionary
+bin
+bin-temp
