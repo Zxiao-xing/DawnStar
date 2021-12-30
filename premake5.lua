@@ -5,6 +5,15 @@ workspace "DawnStar"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDirMap = {}
+IncludeDirMap["GLFW"] = "DawnStar/dependencies/glfw-3.3.6/include"
+IncludeDirMap["Glad"] = "DawnStar/dependencies/glad/include"
+
+group "dependencies"
+	include "DawnStar/dependencies/glfw-3.3.6"
+	include "DawnStar/dependencies/glad"
+group ""
+
 project "DawnStar"
 	location "DawnStar"
 	kind "StaticLib"
@@ -18,6 +27,11 @@ project "DawnStar"
 	pchheader "dspch.h"
 	pchsource "%{prj.name}/src/dspch.cpp"
 
+	defines{
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
+	}
+
 	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.hpp",
@@ -26,11 +40,15 @@ project "DawnStar"
 	}
 
 	includedirs{
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDirMap.GLFW}",
+		"%{IncludeDirMap.Glad}",
 	}
 
 	links{
-		"opengl32.lib"
+		"opengl32.lib",
+		"GLFW",
+		"Glad"
 	}
 
 	filter "configurations:Debug"

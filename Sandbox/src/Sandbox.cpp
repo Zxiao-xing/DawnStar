@@ -3,14 +3,31 @@
 #include <DawnStar.h>
 #include <Core/EntryPoint.h>
 
-class Sandbox : public DawnStar::Application {
-public:
-	Sandbox() {
+namespace DawnStar {
+	class SandboxWorkFlow : public ApplicationWorkFlowBase {
+		// Í¨¹ý ApplicationWorkFlowBase ¼Ì³Ð
+		virtual void InternalOnInit() override
+		{
 
+		}
+		virtual void InternalOnUpdate() override
+		{
+		}
+		virtual void InternalOnClose() override
+		{
+		}
+	private:
+
+	};
+
+	class Sandbox : public Application {
+	public:
+		Sandbox() {
+			SetApplicationWorkFlow(new SandboxWorkFlow());
+		}
+	};
+
+	UniquePtr<Application> CreateApplication() {
+		return CreateUniqueByPtr(new Sandbox());
 	}
-};
-
-DawnStar::UniquePtr<DawnStar::Application> DawnStar::CreateApplication() {
-	Sandbox sandbox;
-	return CreateUnique<Sandbox>(sandbox);
 }
