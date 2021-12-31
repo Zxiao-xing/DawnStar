@@ -6,7 +6,7 @@
 class DebugHelper {
 public:
 	template<typename... Types>
-	static void PrintMsg(const std::string& format, Types ...args) {
+	static void PrintMsg(const std::string& format, const Types& ...args) {
 #if DEBUG
 		m_argsCount = sizeof...(args) - 1;
 		std::string temp = format;
@@ -16,7 +16,7 @@ public:
 	}
 
 	template<typename... Types>
-	static void PrintWarning(const std::string& format, Types ...args) {
+	static void PrintWarning(const std::string& format, const Types& ...args) {
 #if DEBUG
 		m_argsCount = sizeof...(args) - 1;
 		std::string temp = format;
@@ -26,7 +26,7 @@ public:
 	}
 
 	template<typename... Types>
-	static void PrintError(const std::string& format, Types ...args) {
+	static void PrintError(const std::string& format, const Types& ...args) {
 #if DEBUG
 		m_argsCount = sizeof...(args) - 1;
 		std::string temp = format;
@@ -37,7 +37,7 @@ public:
 
 private:
 	template<typename T, typename... Types>
-	static void Print(std::string& format, T& first, Types& ...args) {
+	static void Print(std::string& format, const T& first, const Types& ...args) {
 		// 当前要匹配的参数
 		std::string pattern;
 		m_strStream << "{";

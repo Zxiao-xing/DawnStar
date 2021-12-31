@@ -34,5 +34,3 @@ namespace DawnStar {
 		glfwSwapBuffers(m_windowHandle);
 	}
 }
-
-
