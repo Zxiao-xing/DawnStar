@@ -16,8 +16,8 @@
     <Filter Include="Platform\Windows\GLFWWindow">
       <UniqueIdentifier>{DB68A0C7-4776-CEAD-D05C-CA983C699A64}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Rederer">
-      <UniqueIdentifier>{CE01CB9E-3AE1-493A-43F9-D410AF57B09B}</UniqueIdentifier>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{7CCE658F-689B-C09A-91B4-AE427DE0F528}</UniqueIdentifier>
     </Filter>
     <Filter Include="Utils">
       <UniqueIdentifier>{F68B420E-62A0-6ABF-2B22-0E1F97F566F0}</UniqueIdentifier>
@@ -27,7 +27,13 @@
     <ClInclude Include="src\Core\Application.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\ApplicationWorkFlowBase.h">
+      <Filter>Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Core\EntryPoint.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core\IApplicationWorkFlow.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Core\Momery.h">
@@ -40,6 +46,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLUtils.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\GLFWWindow\DSGLFWwinodw.h">
       <Filter>Platform\Windows\GLFWWindow</Filter>
     </ClInclude>
@@ -47,18 +56,29 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer\GraphicsContext.h">
-      <Filter>Rederer</Filter>
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\RendererAPI.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\Shader.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Utils\DebugHelper.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\dspch.h" />
-    <ClInclude Include="src\Core\IApplicationWorkFlow.h" />
-    <ClInclude Include="src\Core\ApplicationWorkFlowBase.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLUtils.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\File\FileManager.h" />
+    <ClInclude Include="src\Platform\Windows\GLFWWindow\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\ApplicationWorkFlowBase.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
@@ -67,8 +87,17 @@
     <ClCompile Include="src\Platform\Windows\GLFWWindow\DSGLFWwinodw.cpp">
       <Filter>Platform\Windows\GLFWWindow</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderer\Shader.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utils\DebugHelper.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
     <ClCompile Include="src\dspch.cpp" />
-    <ClCompile Include="src\Core\ApplicationWorkFlowBase.cpp" />
-    <ClCompile Include="src\Utils\DebugHelper.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\File\FileManager.cpp" />
+    <ClCompile Include="src\Platform\Windows\GLFWWindow\OpenGLRendererAPI.cpp" />
   </ItemGroup>
 </Project>
