@@ -5,7 +5,8 @@
 #include <unordered_map>
 
 namespace DawnStar {
-	enum class ShaderType {
+	enum class ShaderType : uint8_t {
+		Unknown,
 		Vertex,
 		Fragment,
 		Compute,
@@ -20,8 +21,7 @@ namespace DawnStar {
 
 		virtual const std::string& GetName() const = 0;
 
-		static SharedPtr<Shader> CreateShader(const std::string& filePath, ShaderType type);
-		static SharedPtr<Shader> CreateShader(const std::string& name, const std::string& filePath, ShaderType type);
+		static SharedPtr<Shader> CreateShader(const std::string& filePath);
 
 	private:
 		ShaderType m_shaderType;
@@ -31,7 +31,7 @@ namespace DawnStar {
 	public:
 		void Add(const SharedPtr<Shader>& shader);
 		void Add(const std::string& name, const SharedPtr<Shader>& shader);
-		
+
 		SharedPtr<Shader> LoadShader(const std::string& filePath, ShaderType type);
 		SharedPtr<Shader> LoadShader(const std::string& name, const std::string& filePath, ShaderType type);
 
@@ -41,4 +41,6 @@ namespace DawnStar {
 	private:
 		std::unordered_map<std::string, SharedPtr<Shader>> m_shaderMap;
 	};
+
+	ShaderType String2ShaderType(const std::string& typeStr);
 }
