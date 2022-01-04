@@ -8,6 +8,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDirMap = {}
 IncludeDirMap["GLFW"] = "DawnStar/dependencies/glfw-3.3.6/include"
 IncludeDirMap["Glad"] = "DawnStar/dependencies/glad/include"
+IncludeDir["glm"] = "DawnStar/dependencies/glm"
 
 group "dependencies"
 	include "DawnStar/dependencies/glfw-3.3.6"
@@ -43,6 +44,7 @@ project "DawnStar"
 		"%{prj.name}/src",
 		"%{IncludeDirMap.GLFW}",
 		"%{IncludeDirMap.Glad}",
+		"%{IncludeDir.glm}",
 	}
 
 	links{
