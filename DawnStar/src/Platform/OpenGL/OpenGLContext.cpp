@@ -24,9 +24,9 @@ namespace DawnStar {
 		// 输出 OpenGL 版本信息
 		DebugHelper::PrintMsg("OpenGL Info:");
 
-		DebugHelper::PrintMsg("\tVendor:{0}", OpenGLUtils::GLubytePtr2Str(glGetString(GL_VENDOR)));
-		DebugHelper::PrintMsg("\tRenderer:{0}", OpenGLUtils::GLubytePtr2Str(glGetString(GL_RENDERER)));
-		DebugHelper::PrintMsg("\tVersion:{0}", OpenGLUtils::GLubytePtr2Str(glGetString(GL_VERSION)));
+		DebugHelper::PrintMsg("\tVendor:{0}", OpenGLConvert::GLubytePtr2Str(glGetString(GL_VENDOR)));
+		DebugHelper::PrintMsg("\tRenderer:{0}", OpenGLConvert::GLubytePtr2Str(glGetString(GL_RENDERER)));
+		DebugHelper::PrintMsg("\tVersion:{0}", OpenGLConvert::GLubytePtr2Str(glGetString(GL_VERSION)));
 	}
 
 	void OpenGLContext::SwapBuffer()

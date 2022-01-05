@@ -1,7 +1,7 @@
 #include "dspch.h"
 #include "Shader.h"
-#include "RendererAPI.h"
 #include "Platform/OpenGL/OpenGLShader.h"
+#include "RendererSys.h"
 
 namespace DawnStar {
 	ShaderType String2ShaderType(const std::string& typeStr) {
@@ -19,7 +19,7 @@ namespace DawnStar {
 
 	SharedPtr<Shader> Shader::CreateShader(const std::string& filePath)
 	{
-		switch (RendererAPI::GetAPI())
+		switch (RendererSys::GetCurRendererAPI())
 		{
 		case RendererAPI::API::None:
 			DS_ASSERT_CORE(false, "RendererAPI::None is not supported!");

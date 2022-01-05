@@ -22,6 +22,7 @@ namespace DawnStar {
 	{
 		std::string source = FileManager::ReadFile(filePath);
 		auto shaderSourceMap = PreProcess(source, filePath);
+		Compile(shaderSourceMap);
 
 		auto lastSlash = filePath.find_last_of("/\\");
 		lastSlash == std::string::npos ? 0 : lastSlash += 1;

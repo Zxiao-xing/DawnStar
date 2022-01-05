@@ -8,7 +8,8 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDirMap = {}
 IncludeDirMap["GLFW"] = "DawnStar/dependencies/glfw-3.3.6/include"
 IncludeDirMap["Glad"] = "DawnStar/dependencies/glad/include"
-IncludeDir["glm"] = "DawnStar/dependencies/glm"
+IncludeDirMap["glm"] = "DawnStar/dependencies/glm"
+IncludeDirMap["stb_image"] = "DawnStar/dependencies/stb_image"
 
 group "dependencies"
 	include "DawnStar/dependencies/glfw-3.3.6"
@@ -37,14 +38,19 @@ project "DawnStar"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.c",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/dependencies/glm/glm/**.hpp",
+		"%{prj.name}/dependencies/glm/glm/**.inl",
+		"%{prj.name}/dependencies/stb_image/**.h",
+		"%{prj.name}/dependencies/stb_image/**.cpp",
 	}
 
 	includedirs{
 		"%{prj.name}/src",
 		"%{IncludeDirMap.GLFW}",
 		"%{IncludeDirMap.Glad}",
-		"%{IncludeDir.glm}",
+		"%{IncludeDirMap.glm}",
+		"%{IncludeDirMap.stb_image}",
 	}
 
 	links{
@@ -87,14 +93,14 @@ project "Sandbox"
 
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.hpp",
-		"%{prj.name}/src/**.c",
 		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs{
 		"DawnStar/src",
-
+		"DawnStar/dependencies",
+		"%{IncludeDirMap.Glad}",
+		"%{IncludeDirMap.glm}",
 	}
 
 	links{

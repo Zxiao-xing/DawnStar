@@ -34,12 +34,16 @@ namespace DawnStar {
 	{
 		m_isRunning = false;
 		if (m_applicationWorkFlow != nullptr) {
-			m_applicationWorkFlow->OnUpdate();
+			m_applicationWorkFlow->OnClose();
 		}
 	}
 
 	void Application::SetApplicationWorkFlow(IApplicationWorkFlow* applicationWorkFlow)
 	{
+		if (m_applicationWorkFlow != nullptr) {
+			m_applicationWorkFlow->OnClose();
+		}
+
 		m_applicationWorkFlow = CreateUniqueByPtr(applicationWorkFlow);
 		m_applicationWorkFlow->OnInit();
 	}
