@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <glm/glm.hpp>
+#include "VertexArray.h"
 
 namespace DawnStar {
 
@@ -18,6 +19,8 @@ namespace DawnStar {
 		virtual void SetViewport(uint32_t x, uint32_t y, uint32_t width, uint32_t height) = 0;
 		virtual void SetClearColor(const glm::vec4& color) = 0;
 		virtual void Clear() = 0;
+
+		virtual void Draw(const SharedPtr<VertexArray>& vertexArray, uint32_t indexCount = 0) = 0;
 
 		// 渲染系统内部通过该接口获取当前使用 API
 		inline API GetAPI() { return m_API; }

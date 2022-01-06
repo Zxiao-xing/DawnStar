@@ -8,4 +8,4 @@
 #include <Renderer/RendererCommand.h>
 #include <Renderer/Shader.h>
 #include <Renderer/Texture.h>
-
+#include <Renderer/VertexArray.h>

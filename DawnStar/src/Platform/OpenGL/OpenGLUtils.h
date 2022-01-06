@@ -2,6 +2,7 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <Renderer/Texture.h>
+#include <Renderer/Buffer.h>
 
 namespace DawnStar {
 	class OpenGLConvert {
@@ -33,6 +34,25 @@ namespace DawnStar {
 				return GL_RGB;
 			}
 			DS_ASSERT_CORE(false, "Unkonwn data format");
+			return 0;
+		}
+
+		static GLenum ShaderDataType2GLenum(EnShaderDataType shaderDataType) {
+			switch (shaderDataType)
+			{
+			case DawnStar::EnShaderDataType::Bool:		return GL_BOOL;
+			case DawnStar::EnShaderDataType::Int:
+			case DawnStar::EnShaderDataType::Int2:
+			case DawnStar::EnShaderDataType::Int3:
+			case DawnStar::EnShaderDataType::Int4:		return GL_INT;
+			case DawnStar::EnShaderDataType::Float:
+			case DawnStar::EnShaderDataType::Float2:
+			case DawnStar::EnShaderDataType::Float3:
+			case DawnStar::EnShaderDataType::Float4:	
+			case DawnStar::EnShaderDataType::Mat3:
+			case DawnStar::EnShaderDataType::Mat4:		return GL_FLOAT;
+			}
+			DS_ASSERT_CORE(false, "Unkonwn shader data type");
 			return 0;
 		}
 

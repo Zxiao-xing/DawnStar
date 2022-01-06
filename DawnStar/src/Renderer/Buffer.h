@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <Core/Momery.h>
 
 namespace DawnStar {
 	enum class EnShaderDataType : uint8_t{
@@ -64,7 +65,7 @@ namespace DawnStar {
 		std::string Name;
 
 		BufferElement(EnShaderDataType type, const std::string& name, bool normalized = false)
-			: Name(name), DataType(type), Size(), Offset(0), IsNormalized(normalized)
+			: Name(name), DataType(type), Size(ShaderDataTypeByteCount(type)), Offset(0), IsNormalized(normalized)
 		{
 		}
 	};
@@ -89,6 +90,9 @@ namespace DawnStar {
 
 		std::vector<BufferElement>::iterator begin()	{ return m_elements.begin(); }
 		std::vector<BufferElement>::iterator end()		{ return m_elements.end(); }
+		std::vector<BufferElement>::const_iterator begin() const	{ return m_elements.begin(); }
+		std::vector<BufferElement>::const_iterator end()const		{ return m_elements.end(); }
+
 		std::vector<BufferElement>::const_iterator cbegin() const	{ return m_elements.cend(); }
 		std::vector<BufferElement>::const_iterator cend() const		{ return m_elements.cend(); }
 
@@ -108,10 +112,30 @@ namespace DawnStar {
 	};
 
 	class VertexBuffer {
+	public:
+		virtual ~VertexBuffer() = default;
 
+		virtual const BufferLayout& GetLayout() const = 0;
+		virtual void SetLayout(const BufferLayout& layout) = 0;
+
+		virtual void SetData(const void* data, uint32_t size) = 0;
+
+		virtual void Bind() const = 0;
+		virtual void UnBind() const = 0;
+	public:
+		static SharedPtr<VertexBuffer> CreateVertexBuffer(uint32_t size);
+		static SharedPtr<VertexBuffer> CreateVertexBuffer(float* vertices, uint32_t size);
 	};
 
 	class IndexBuffer {
+	public:
+		virtual ~IndexBuffer() = default;
 
+		virtual uint32_t GetCount() const = 0;
+
+		virtual void Bind() const = 0;
+		virtual void UnBind() const = 0;
+	public:
+		static SharedPtr<IndexBuffer> CreateIndexBuffer(uint32_t* indices, uint32_t count);
 	};
 }

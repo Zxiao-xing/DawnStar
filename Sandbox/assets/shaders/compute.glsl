@@ -8,16 +8,11 @@ void main() {
   vec4 pixel = vec4(1.0, 1.0, 0.0, 1.0);
   // get index in global work group i.e x,y position
   ivec2 pixel_coords = ivec2(gl_GlobalInvocationID.xy);
-  
-  ivec2 dims = imageSize(img_output); // fetch image dimensions
-  float x = pixel_coords.x;
-  float y = pixel_coords.y;
-  vec2 origin = vec2(dims.x / 2, dims.y / 2);
-  x -= origin.x;
-  y -= origin.y;
-  float radiusPow2 = 10000;
-  if(x * x +  y * y <= radiusPow2){
-    pixel = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+
+  ivec2 size = imageSize(img_output); // fetch image dimensions
+
+  if(pixel_coords.x >= size.x / 2){
+    pixel = vec4(1.0, 0.0, 0.0, 1.0);
   }
 
   // output to a specific pixel in the image

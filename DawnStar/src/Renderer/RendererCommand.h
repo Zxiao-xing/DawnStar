@@ -23,6 +23,10 @@ namespace DawnStar {
 			s_rendererAPI->Clear();
 		}
 
+		inline static void  Draw(const SharedPtr<VertexArray>& vertexArray, uint32_t indexCount = 0) {
+			s_rendererAPI->Draw(vertexArray, indexCount);
+		}
+
 		inline static RendererAPI::API GetCurRendererAPI() { 
 			return s_rendererAPI->GetAPI(); 
 		}

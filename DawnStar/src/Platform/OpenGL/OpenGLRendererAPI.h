@@ -14,5 +14,7 @@ namespace DawnStar {
 		virtual void SetClearColor(const glm::vec4& color) override;
 
 		virtual void Clear() override;
+
+		virtual void Draw(const SharedPtr<VertexArray>& vertexArray, uint32_t indexCount = 0) override;
 	};
 }
